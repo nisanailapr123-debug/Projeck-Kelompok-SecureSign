@@ -105,22 +105,6 @@ signdoc/
 
 ---
 
-## Pertanyaan Kriptografi (untuk Presentasi)
-
-**Q: Mengapa RSA-2048 bukan ECDSA?**
-A: RSA lebih familiar, library dukungan luas, 2048-bit masih aman hingga 2030+. ECDSA lebih efisien tapi memerlukan pemahaman kurva eliptik.
-
-**Q: Mengapa dokumen di-hash dulu sebelum di-sign?**
-A: RSA hanya dapat mengenkripsi data ≤ ukuran kunci (256 byte untuk RSA-2048). SHA-256 menghasilkan 32 byte — selalu masuk.
-
-**Q: Mengapa SHA-256 lebih aman dari MD5?**
-A: MD5 punya kelemahan collision (dua file berbeda → hash sama), dibuktikan tahun 2004. SHA-256 belum ditemukan collision hingga kini.
-
-**Q: Apa yang terjadi jika private key bocor?**
-A: Signature lama tetap valid (tidak bisa dicabut secara retroaktif dalam sistem ini). Mitigasi: revocation list (fitur pengembangan).
-
----
-
 ## Fitur yang Diimplementasikan
 
 ### Wajib ✅
