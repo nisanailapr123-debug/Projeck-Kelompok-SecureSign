@@ -1,4 +1,8 @@
 # SignDoc — Sistem Tanda Tangan Digital
+**Kelompok**
+1. Ahmad Aly (2488010069)
+2. Nazwa Hummaimah Shidqin (2488010039)
+3. Nisa Naila (2488010024)
 
 Proyek Akhir (UAS) Kriptografi Modern  
 **Tema 1: SignDoc** — Tanda Tangan Digital untuk Dokumen  
