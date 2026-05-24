@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Tanda Tangan Berhasil{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="text-center mb-4">
+            <div class="success-icon mb-3">
+                <i class="bi bi-patch-check-fill text-success" style="font-size:4rem"></i>
+            </div>
+            <h2 class="fw-bold">Tanda Tangan Berhasil!</h2>
+            <p class="text-muted">Dokumen telah ditandatangani secara digital menggunakan RSA-2048</p>
+        </div>
+
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-success text-white">
+                <h6 class="mb-0 fw-semibold"><i class="bi bi-info-circle me-2"></i>Detail Tanda Tangan</h6>
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Penanda Tangan</dt>
+                    <dd class="col-sm-8"><strong>{{ result[5] }}</strong></dd>
+
+                    <dt class="col-sm-4">Dokumen</dt>
+                    <dd class="col-sm-8">{{ result[3].split('_', 1)[1] if '_' in result[3] else result[3] }}</dd>
+
+                    <dt class="col-sm-4">Hash SHA-256</dt>
+                    <dd class="col-sm-8"><code class="text-break small">{{ result[4] }}</code></dd>
+
+                    <dt class="col-sm-4">Waktu Signing</dt>
+                    <dd class="col-sm-8">{{ result[2].strftime('%d %B %Y, %H:%M:%S') }}</dd>
+
+                    <dt class="col-sm-4">Signature (Base64)</dt>
+                    <dd class="col-sm-8">
+                        <div class="border rounded p-2 bg-light">
+                            <code class="text-break small" style="font-size:0.7rem">
+                                {{ result[1][:80] }}...
+                            </code>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Download signature -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+                <h6 class="fw-semibold mb-2"><i class="bi bi-download me-2 text-primary"></i>Unduh File Signature</h6>
+                <p class="text-muted small mb-3">
+                    Simpan file <code>.sig</code> ini. File ini diperlukan bersama dokumen asli
+                    untuk proses verifikasi.
+                </p>
+                <a href="{{ url_for('document.download_sig', filename=sig_filename) }}"
+                   class="btn btn-primary">
+                    <i class="bi bi-file-earmark-arrow-down me-2"></i>Download {{ sig_filename }}
+                </a>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <a href="{{ url_for('document.upload') }}" class="btn btn-success">
+                <i class="bi bi-cloud-upload me-2"></i>Upload Dokumen Lain
+            </a>
+            <a href="{{ url_for('verify.verify') }}" class="btn btn-outline-primary">
+                <i class="bi bi-shield-check me-2"></i>Coba Verifikasi
+            </a>
+            <a href="{{ url_for('document.history') }}" class="btn btn-outline-secondary">
+                <i class="bi bi-clock-history me-2"></i>Riwayat
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

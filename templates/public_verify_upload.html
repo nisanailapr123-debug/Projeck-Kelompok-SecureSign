@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Verifikasi QR{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-body p-5">
+
+                <div class="text-center mb-4">
+
+                    <i class="bi bi-qr-code-scan text-primary"
+                       style="font-size:4rem"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        Verifikasi QR Code
+                    </h2>
+
+                    <p class="text-muted">
+                        Upload dokumen asli untuk memeriksa
+                        apakah dokumen telah dimodifikasi.
+                    </p>
+
+                </div>
+
+                <form method="POST" enctype="multipart/form-data">
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold">
+                            Upload Dokumen
+                        </label>
+
+                        <input
+                            type="file"
+                            name="doc_file"
+                            class="form-control"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100"
+                    >
+                        Verifikasi Dokumen
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

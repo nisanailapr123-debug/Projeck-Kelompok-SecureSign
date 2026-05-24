@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title %}Upload Dokumen{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+        <h2 class="fw-bold mb-1">
+            <i class="bi bi-cloud-upload text-primary me-2"></i>
+            Upload Dokumen
+        </h2>
+
+        <p class="text-muted mb-4">
+            Unggah dokumen untuk dihitung hash SHA-256-nya dan ditandatangani
+        </p>
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+
+                <form method="POST" enctype="multipart/form-data" id="uploadForm">
+
+                    <!-- Upload File -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">
+                            Pilih File Dokumen
+                        </label>
+
+                        <input type="file"
+                               name="file"
+                               id="fileInput"
+                               class="form-control form-control-lg"
+                               accept=".pdf,.txt,.docx,.png,.jpg"
+                               required>
+
+                        <div class="form-text mt-2">
+                            Format: PDF, TXT, DOCX, PNG, JPG (maks. 16 MB)
+                        </div>
+                    </div>
+
+                    <!-- File Info -->
+                    <div id="fileInfo"
+                         class="alert alert-info d-none mb-3">
+
+                        <i class="bi bi-file-check me-2"></i>
+
+                        <span id="fileName"></span>
+
+                        <small class="text-muted ms-2"
+                               id="fileSize"></small>
+                    </div>
+
+                    <!-- MULTI SIGNER -->
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold">
+                            Pilih Signer
+                        </label>
+
+                        <select name="signers"
+                                class="form-select"
+                                multiple
+                                required>
+
+                            {% for user in users %}
+                                <option value="{{ user[0] }}">
+                                    {{ user[1] }}
+                                </option>
+                            {% endfor %}
+
+                        </select>
+
+                        <div class="form-text">
+                            Tekan CTRL untuk memilih lebih dari satu signer
+                        </div>
+
+                    </div>
+
+                    <!-- Info -->
+                    <div class="alert alert-light border mb-4">
+
+                        <small>
+                            <i class="bi bi-info-circle text-primary me-1"></i>
+
+                            <strong>
+                                Yang terjadi setelah upload:
+                            </strong>
+
+                            <br>
+
+                            1. File disimpan di server<br>
+                            2. Hash <strong>SHA-256</strong> dihitung dari isi file<br>
+                            3. Hash disimpan di database sebagai identitas dokumen<br>
+                            4. Signer dipilih dan disimpan<br>
+                            5. Anda diarahkan ke halaman tanda tangan
+
+                        </small>
+
+                    </div>
+
+                    <!-- Button -->
+                    <button type="submit"
+                            class="btn btn-primary w-100 py-2 fw-semibold">
+
+                        <i class="bi bi-upload me-2"></i>
+
+                        Upload &amp; Hitung Hash
+
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('fileInput').addEventListener('change', function() {
+
+    if (this.files.length > 0) {
+
+        var file = this.files[0];
+        var sizeKb = (file.size / 1024).toFixed(1);
+
+        document.getElementById('fileName').textContent = file.name;
+
+        document.getElementById('fileSize').textContent =
+            '(' + sizeKb + ' KB)';
+
+        document.getElementById('fileInfo')
+            .classList.remove('d-none');
+    }
+});
+</script>
+
+{% endblock %}
