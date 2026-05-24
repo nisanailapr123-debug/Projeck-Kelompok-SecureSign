@@ -1,0 +1,66 @@
+/* SignDoc — Custom Styles */
+
+body {
+    background-color: #f8f9fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Upload zone */
+.upload-zone {
+    border: 2px dashed #0d6efd !important;
+    border-radius: 12px !important;
+    background: #f0f5ff;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.upload-zone:hover {
+    background: #e0ecff;
+    border-color: #084fbc !important;
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+}
+
+/* Stat cards */
+.stat-icon {
+    opacity: 0.85;
+}
+
+/* Navbar brand */
+.navbar-brand {
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+}
+
+/* Code blocks */
+code {
+    font-size: 0.8em;
+    word-break: break-all;
+}
+
+/* Success icon animation */
+.success-icon i {
+    animation: popIn 0.4s ease-out;
+}
+
+@keyframes popIn {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.1); }
+    100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Crypto step badges */
+.crypto-step {
+    font-size: 0.85rem;
+}
+
+/* Scrollable code areas */
+.sig-code {
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 0.7rem;
+    word-break: break-all;
+}
