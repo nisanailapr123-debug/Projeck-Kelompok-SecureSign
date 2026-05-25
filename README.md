@@ -9,7 +9,7 @@ Proyek Akhir (UAS) Kriptografi Modern
 Algoritma: **RSA-2048 + SHA-256 (PSS padding)**
 
 <h3>Video Demonstrasi</h3>
-<a href="https://youtu.be/i0bSArvkPVE?si=BD0pb1Lw_6M2oTRv">Link YouTube</a>
+<a href="https://youtu.be/uYtjRMpj4wc?si=O78K0PBKphjYMFaj">Link YouTube</a>
 
 ---
 
